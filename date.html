@@ -1,0 +1,46 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calculateur Temps RP</title>
+</head>
+
+<body>
+
+<h1>Calculateur Temps RP</h1>
+
+<input type="datetime-local" id="dateirl">
+<button onclick="convert()">Convertir</button>
+
+<p id="resultat"></p>
+
+<script>
+
+const baseIRL = new Date("2026-03-30T00:00:00");
+const baseRP = new Date("2027-01-01T00:00:00");
+
+const speed = 365 / 14;
+
+function convert(){
+
+let dateInput = new Date(document.getElementById("dateirl").value);
+
+let diff = dateInput - baseIRL;
+
+let days = diff / (1000*60*60*24);
+
+let rpDays = days * speed;
+
+let rpDate = new Date(baseRP.getTime() + rpDays*24*60*60*1000);
+
+document.getElementById("resultat").innerText =
+"Date RP : " + rpDate;
+
+}
+
+</script>
+
+</body>
+</html>
+```
